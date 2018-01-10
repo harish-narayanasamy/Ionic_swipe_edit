@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Book List
+    </ion-title>
+      <ion-buttons end>
+      <button ion-button icon-only (click)="addBook()">
+          <ion-icon name="add"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<h2>Book List</h2>
+    <ion-list>
+        <ion-item-sliding *ngFor="let book of books | async">
+        <ion-item>
+           <p> Title:{{book}} </p> 
+            <p> Author:{{book}} </p> 
+        </ion-item>
+            <ion-item-options side ="right">
+                <button ion-button color="secondary" (click)="editBook(book)">
+                    <ion-icon name="md-create">Edit
+                    </ion-icon>
+                </button>
+                </ion-item-options>
+             <ion-item-options side ="left">
+                <button ion-button color="danger" (click)="deleteBook(book.$key)">
+                    <ion-icon name="md-trash">Delete
+                    </ion-icon>
+                
+                </button>
+            </ion-item-options>
+            </ion-item-sliding>
+    </ion-list>
+</ion-content>
